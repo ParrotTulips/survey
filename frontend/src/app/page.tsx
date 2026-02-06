@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { AlertCircle } from "lucide-react";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -88,7 +90,11 @@ export default function Home() {
                 />
               </div>
               {error ? (
-                <p className="text-sm text-destructive">{error}</p>
+                <Alert variant="destructive">
+                  <AlertCircle />
+                  <AlertTitle>登录失败</AlertTitle>
+                  <AlertDescription>{error}</AlertDescription>
+                </Alert>
               ) : null}
               <Button type="submit" disabled={isLoading}>
                 {isLoading ? "登录中..." : "登录"}
